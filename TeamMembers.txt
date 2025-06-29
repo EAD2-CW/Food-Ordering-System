@@ -1,0 +1,12 @@
+Group Members - 
+
+COHNDSE251F-083 - L H S S DE SILVA
+COHNDSE251F-061 - M M M ATHTHANAYAKA
+COHNDSE251F-097 - SENDANAYAKE V T
+COHNDSE251F-101 - P T K THENNAKOON
+COHNDSE251F-070 - R A D R THAMUDITHA
+
+
+- This a Micro-Service Architecture based on the idea of Food Ordering System which can be used in a restaurant.
+- This in total consists of 4 microservices including the Front End Microservice
+   
