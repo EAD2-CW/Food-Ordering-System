@@ -1,7 +1,6 @@
 package com.foodapp.userservice.model;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
 
 @Entity
@@ -24,16 +23,27 @@ public class User {
     @Column(nullable = false)
     private Role role = Role.CUSTOMER;
 
+    private String firstName;
+
+    private String lastName;
+
     private String phone;
 
     private String address;
 
+    private String status = "ACTIVE";
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 
     // Constructors
     public User() {
         this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+        this.status = "ACTIVE";
     }
 
     public User(String username, String email, String password, String phone, String address) {
@@ -43,7 +53,9 @@ public class User {
         this.phone = phone;
         this.address = address;
         this.role = Role.CUSTOMER;
+        this.status = "ACTIVE";
         this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
     }
 
     public User(String username, String email, String password, Role role, String phone, String address) {
@@ -53,7 +65,24 @@ public class User {
         this.role = role;
         this.phone = phone;
         this.address = address;
+        this.status = "ACTIVE";
         this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+    }
+
+    // Constructor with all fields
+    public User(String username, String email, String password, Role role, String firstName, String lastName, String phone, String address) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.address = address;
+        this.status = "ACTIVE";
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
     }
 
     // Getters and Setters
@@ -97,6 +126,22 @@ public class User {
         this.role = role;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -113,12 +158,28 @@ public class User {
         this.address = address;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     @Override
@@ -128,9 +189,13 @@ public class User {
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", role=" + role +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
+                ", status='" + status + '\'' +
                 ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
                 '}';
     }
 }

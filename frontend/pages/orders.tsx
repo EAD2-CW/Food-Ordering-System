@@ -12,30 +12,32 @@ export default function Orders() {
   const router = useRouter();
 
   useEffect(() => {
-    if (!isAuthenticated()) {
-      router.push("/login");
-      return;
-    }
-
-    fetchOrders();
-  }, [router]);
-
-  const fetchOrders = async (): Promise<void> => {
-    try {
+    const fetchOrders = async () => {
       const user = getUser();
-      if (!user) {
+
+      if (!isAuthenticated() || !user || !user.id) {
         router.push("/login");
         return;
       }
 
-      const response = await orderService.getUserOrders(user.id);
-      setOrders(response.data);
-    } catch (error: any) {
-      console.error("Error fetching orders:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+      try {
+        const response = await orderService.getUserOrders(user.id);
+
+        // Fix: use 'userId' instead of 'user_id'
+        const userOrders = response.data.filter(
+          (order: Order) => order.userId === user.id
+        );
+
+        setOrders(userOrders);
+      } catch (error: any) {
+        console.error("Error fetching orders:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchOrders();
+  }, [router]);
 
   if (loading) {
     return (

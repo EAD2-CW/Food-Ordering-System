@@ -15,7 +15,8 @@
     "js-cookie": "^3.0.5",
     "next": "^15.0.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-hot-toast": "^2.5.2"
   },
   "devDependencies": {
     "@types/formidable": "^3.4.5",
