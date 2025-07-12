@@ -71,7 +71,7 @@ export default function Orders() {
                 d="M12 4v16m8-8H4"
               />
             </svg>
-            <span>Order More Food</span>
+            <span>Order More Foods</span>
           </button>
         </div>
 
@@ -81,7 +81,7 @@ export default function Orders() {
               No orders yet
             </h2>
             <p className="text-gray-600 mb-6">
-              Start by ordering some delicious food from our menu!
+              Start by fabulous some delicious food from our menu!
             </p>
             <button onClick={() => router.push("/")} className="btn-primary">
               Browse Menu
